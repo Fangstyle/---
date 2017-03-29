@@ -9,7 +9,7 @@
   padding: 10rpx;
   border: 1rpx solid darkblue;
 }
-.pdf{
+text{
   display: block;
   margin:10rpx 0;
   padding: 10rpx;
