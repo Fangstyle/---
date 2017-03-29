@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/doc/doc",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#405f80",
+    "navigationBarTitleText": "棕榈测试",
+    "navigationBarTextStyle":"#000"
+  }
+}

@@ -1,0 +1,5 @@
+<!--index.wxml-->
+  <view class="docs">
+    <text class="doc" bindtap="loadDoc">打开doc文件</text>
+    <text class="pdf" bindtap="loadPdf"> 打开pdf文件</text>
+  </view>
