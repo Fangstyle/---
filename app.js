@@ -9,13 +9,13 @@ App({
         //this.checkState();
         console.log("哈哈");
         wx.navigateTo({
+            url: 'pages/regist/regist'
+        })
+       
+    }else{
+       wx.navigateTo({
             url: 'pages/index/index'
         })
-    }else{
-        //this.login();
-       /* wx.switchTab({
-            url: 'pages/others/others'
-        });*/
     }
   },
   getUserInfo:function(cb){

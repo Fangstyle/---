@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="login">
+        <input type="number" placeholder="请输入您的手机号" auto-focus />
+        <button bindtap="confirms">{{countTime}}</button>
+        <input type="number" placeholder="请输入验证码" />
+        <button>注册</button>
+    </view>
+</view>
