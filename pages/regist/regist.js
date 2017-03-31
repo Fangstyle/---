@@ -5,7 +5,7 @@ var app = getApp();
 Page({
     data: {
         countTime: "点击获取验证码",
-        btnDisable: false,
+        btnDisable: true,
         userInfo: {},
     },
     //事件处理函数
@@ -20,9 +20,9 @@ Page({
         var self = this;
         this.setData({
             countTime: 5,
-            btnDisable: true
         });
 
+        console.log('phoneNum is ' + self.data.phoneNum);
         var timer = setInterval(function () {
             if (self.data.countTime) {
                 console.log("timing");
@@ -39,5 +39,25 @@ Page({
             }
         }, 1000)
 
+    },
+    bindPhoneNum: function(e) {
+        let temp = true;
+        (/^1(3|4|5|7|8)\d{9}$/.test(e.detail.value))?temp=false:true;
+        this.setData({
+            phoneNum: e.detail.value,
+            btnDisable:temp
+        })
+    },
+    bindConfirmNum:function (e) {
+        this.setData({
+            confirmNum:e.detail.value
+        })
+    },
+
+    regist:function () {
+        //utils.httpPost(url,{'confirmNum':e.detail.value,self.confirmNum},toPages);
+    },
+    toPages: function (res) {
+        
     }
 });
