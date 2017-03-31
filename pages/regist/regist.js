@@ -5,7 +5,8 @@ var app = getApp();
 Page({
     data: {
         countTime: "点击获取验证码",
-        userInfo: {}
+        btnDisable: false,
+        userInfo: {},
     },
     //事件处理函数
     confirms: function () {
@@ -18,8 +19,10 @@ Page({
     compelteSend: function () {
         var self = this;
         this.setData({
-            countTime: 5
+            countTime: 5,
+            btnDisable: true
         });
+
         var timer = setInterval(function () {
             if (self.data.countTime) {
                 console.log("timing");
@@ -29,10 +32,12 @@ Page({
                 });
             } else {
                 self.setData({
-                    countTime: "点击获取验证码"
+                    countTime: "点击获取验证码",
+                    btnDisable: false
                 });
                 clearInterval(timer);
             }
-        }, 1000);
+        }, 1000)
+
     }
 });
