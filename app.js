@@ -7,14 +7,17 @@ App({
     wx.setStorageSync('logs', logs);
     if(this.globalData['3rd_session']){
         //this.checkState();
-        console.log("哈哈");
+        console.log("检测验证时效性通过");
+        //下方写在checkState中，为了测试
         wx.navigateTo({
-            url: 'pages/regist/regist'
+            url: 'pages/regist/regist?isLogin='+'登陆'
         })
        
     }else{
+        //第一次进行登录 打开注册页面
+     console.log("注册页面");
        wx.navigateTo({
-            url: 'pages/index/index'
+            url: 'pages/regist/regist?isLogin='+'注册'
         })
     }
   },
@@ -80,6 +83,6 @@ App({
     },
   globalData:{
     userInfo:null,
-    "3rd_session":'key'
+    "3rd_session":'f'
   }
 })

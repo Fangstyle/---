@@ -3,6 +3,11 @@
 //var utils = require('../../utils/util.js');
 var app = getApp();
 Page({
+    onLoad: function (options) {
+        this.setData({
+           isLogin:options.isLogin
+        });
+    },
     data: {
         countTime: "点击获取验证码",
         btnDisable: true,
@@ -12,9 +17,6 @@ Page({
     confirms: function () {
         //utils.httpPost(url,postparams,compelteSend);
         this.compelteSend();
-    },
-    onLoad: function () {
-
     },
     compelteSend: function () {
         var self = this;
@@ -40,24 +42,26 @@ Page({
         }, 1000)
 
     },
-    bindPhoneNum: function(e) {
+    bindPhoneNum: function (e) {
         let temp = true;
-        (/^1(3|4|5|7|8)\d{9}$/.test(e.detail.value))?temp=false:true;
+        (/^1(3|4|5|7|8)\d{9}$/.test(e.detail.value)) ? temp = false : true;
         this.setData({
             phoneNum: e.detail.value,
-            btnDisable:temp
+            btnDisable: temp
         })
     },
-    bindConfirmNum:function (e) {
+    bindConfirmNum: function (e) {
         this.setData({
-            confirmNum:e.detail.value
+            confirmNum: e.detail.value
         })
     },
 
-    regist:function () {
+    regist: function () {
         //utils.httpPost(url,{'confirmNum':e.detail.value,self.confirmNum},toPages);
     },
     toPages: function (res) {
-        
+        wx.switchTab({
+            url: '../doc/doc'
+        })
     }
 });

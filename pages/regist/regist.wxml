@@ -4,6 +4,6 @@
         <input type="number"   bindinput="bindPhoneNum" placeholder="请输入您的手机号" auto-focus  value="{{phoneVaule}}"/>
         <button bindtap="confirms" disabled="{{btnDisable}}">{{countTime}}</button>
         <input type="number" bindinput="bindConfirmNum" placeholder="请输入验证码" />
-        <button >注册</button>
+        <button bindtap="toPages">{{isLogin}}</button>
     </view>
 </view>
