@@ -7,15 +7,15 @@ App({
     wx.setStorageSync('logs', logs);
     if(this.globalData['3rd_session']){
         //this.checkState();
+        console.log("哈哈");
         wx.navigateTo({
-            url: 'pages/doc/doc'
+            url: 'pages/index/index'
         })
-
     }else{
         //this.login();
-        wx.navigateTo({
-            url: 'pages/login/login'
-        });
+       /* wx.switchTab({
+            url: 'pages/others/others'
+        });*/
     }
   },
   getUserInfo:function(cb){
@@ -80,6 +80,6 @@ App({
     },
   globalData:{
     userInfo:null,
-    "3rd_session":null
+    "3rd_session":'key'
   }
 })

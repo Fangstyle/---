@@ -1,5 +1,3 @@
-//index.js
-//获取应用实例
 var app = getApp()
 Page({
   data: {
@@ -8,7 +6,7 @@ Page({
   },
   //事件处理函数
   toAppPage: function() {
-    wx.switchTab({
+    wx.navigateTo({
       url: '../doc/doc'
     })
   },

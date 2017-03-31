@@ -3,12 +3,33 @@
     "pages/doc/doc",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/others/others"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#405f80",
     "navigationBarTitleText": "棕榈测试",
     "navigationBarTextStyle":"#000"
+  },
+   "tabBar": {
+    "list": [
+      {
+        "color":"#333",
+        "selectedColor":"#1F4BA5",
+        "iconPath":"images/tab/ciwei.png",
+        "selectedIconPath":"images/tab/ciwei_hl.png",
+        "pagePath": "pages/doc/doc",
+        "text": "首页"
+      },
+      {
+        "color":"#333",
+        "selectedColor":"#1F4BA5",
+        "iconPath":"images/tab/yuedu.png",
+        "selectedIconPath":"images/tab/yuedu_hl.png",
+        "pagePath": "pages/others/others",
+        "text": "others"
+      }
+      ]
   }
 }
