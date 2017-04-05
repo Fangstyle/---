@@ -12,6 +12,7 @@ Page({
         countTime: "点击获取验证码",
         btnDisable: true,
         userInfo: {},
+        btnToPages:true
     },
     //事件处理函数
     confirms: function () {
@@ -22,6 +23,7 @@ Page({
         var self = this;
         this.setData({
             countTime: 5,
+            btnDisable: true
         });
 
         console.log('phoneNum is ' + self.data.phoneNum);
@@ -51,9 +53,14 @@ Page({
         })
     },
     bindConfirmNum: function (e) {
-        this.setData({
-            confirmNum: e.detail.value
-        })
+        let temp = true;
+        if(e.detail.value){
+            this.setData({
+                confirmNum: e.detail.value,
+                btnToPages:false
+            })
+        }
+
     },
 
     regist: function () {

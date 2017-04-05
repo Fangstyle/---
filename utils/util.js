@@ -15,7 +15,7 @@ function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
-function  httpGet(url,callback) {
+function  httpGet(url,callback,completeCallback) {
     wx.request({
         url: url, //仅为示例，并非真实的接口地址
         header: {
@@ -23,10 +23,16 @@ function  httpGet(url,callback) {
         },
         success: function(res) {
             callback(res);
+        },
+        fail: function(){
+
+        },
+        complete:function() {
+            completeCallback();
         }
     })
 }
-function httpPost(url,postparams,callback) {
+function httpPost(url,postparams,callback,completeCallback) {
     wx.request({
         url: url, //仅为示例，并非真实的接口地址
         data: postparams,
@@ -35,6 +41,12 @@ function httpPost(url,postparams,callback) {
         },
         success: function(res) {
             callback(res);
+        },
+        fail: function(){
+
+        },
+        complete:function() {
+            completeCallback();
         }
     })
 }

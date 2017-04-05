@@ -2,11 +2,10 @@
   "pages":[
     "pages/doc/doc",
     "pages/index/index",
-    "pages/logs/logs",
     "pages/login/login",
     "pages/others/others",
-    "pages/regist/regist"
-   
+    "pages/regist/regist",
+    "pages/scroll/scroll"
   ],
   "window":{
     "backgroundTextStyle":"light",
