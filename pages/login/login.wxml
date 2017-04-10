@@ -1,2 +1,10 @@
 <!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<view>
+    <view class="message-login">
+        <image class="icon-login" src="../../images/head.png" ></image>
+        <text class="text-login" >棕榈用户</text>
+        <button class="login-exists" bindtap="login">直接登录</button>
+        <button class="switch-count" bindtap="regist">换个账号登陆</button>
+    </view>
+
+</view>

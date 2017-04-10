@@ -4,9 +4,7 @@
 var app = getApp();
 Page({
     onLoad: function (options) {
-        this.setData({
-           isLogin:options.isLogin
-        });
+
     },
     data: {
         countTime: "点击获取验证码",
@@ -64,11 +62,24 @@ Page({
     },
 
     regist: function () {
+        var self = this;
         //utils.httpPost(url,{'confirmNum':e.detail.value,self.confirmNum},toPages);
+        app.regist(self.toPages);
     },
-    toPages: function (res) {
-        wx.switchTab({
-            url: '../doc/doc'
-        })
+    toPages: function () {
+        wx.setStorage({
+            key: "user_name",
+            data: "resgist_user"
+        });
+        wx.setStorage({
+            key: "alreadyLogin",
+            data:1
+        });
+        app.storageTolocal('alreadyLogin',function () {
+            wx.switchTab({
+                url: '../doc/doc'
+            })
+        });
+
     }
 });

@@ -1,0 +1,13 @@
+<view>
+  <view class="message-login">
+  <text class="login-logo-text" wx:if="{{!isLogin}}">登陆棕榈，开启旅程</text>
+  <button wx:if="{{!isLogin}}" bindtap="login">登陆/注册</button>
+    <image class="icon-login" src="../../images/head.png" wx:if="{{isLogin}}" bindtap="popWindow"></image>
+    <text class="text-login" wx:if="{{isLogin}}">棕榈用户</text>
+  </view>
+      <view class="popWindow" wx:if="{{isShowingDialog}}">
+       <text>确定退出</text>
+        <button class="confirm" bindtap="LogOut">确定</button>
+        <button class="cancel" bindtap="popWindow">取消</button>
+    </view>
+</view>

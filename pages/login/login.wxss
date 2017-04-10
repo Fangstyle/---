@@ -1,1 +1,21 @@
-/* pages/login/login.wxss */
+
+    .message-login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #c0c0c0;
+    padding: 30rpx 0;
+    }
+
+    .message-login .icon-login{
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 100rpx;
+    border: 3px solid #fff;
+    }
+
+    .message-login .text-login{
+     margin: 30rpx 0 ;
+    }
+    

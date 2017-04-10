@@ -1,0 +1,42 @@
+.message-login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #c0c0c0;
+    padding: 30rpx 0;
+}
+.message-login .icon-login{
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 100rpx;
+    border: 3px solid #fff;
+}
+.message-login .text-login{
+    margin-top: 30rpx;
+}
+.message-login .login-logo-text{
+    margin-bottom: 30rpx;
+}
+.popWindow {
+        position: absolute;
+        width: 500rpx;
+        height: 200rpx;
+        z-index: 1000;
+        top: 100rpx;
+        left: 100rpx;
+        background-color: rgba(0, 0, 0, .6);
+        text-align: center;
+    }
+    .popWindow .confirm{
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        margin-left: -200rpx;
+    }
+    .popWindow .cancel{
+        position: absolute;
+        right: 50%;
+        top: 40%;
+        margin-right: -200rpx;
+    }

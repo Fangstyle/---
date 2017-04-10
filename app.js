@@ -3,10 +3,9 @@ var util = require('utils/util.js');
 App({
     onLaunch: function () {
         let self = this;
-        console.log(111);
         //调用API从本地缓存中获取数据
-
-        wx.getStorage({
+        self.storageTolocal('alreadyLogin');
+/*        wx.getStorage({
             key: '3rd_session',
             success: function (res) {
                 self.globalData.rd_session = res.data;
@@ -26,9 +25,23 @@ App({
         });
         console.log('获取数据成功' + self.globalData.rd_session + "++");
         console.log(this.globalData.rd_session);
-
+*/
     },
-    login: function () {
+    storageTolocal:function (key,callback) {
+        var self = this;
+        wx.getStorage({
+            key: key,
+            success: function (res) {
+                self.globalData[key] = res.data;
+            },complete: function () {
+                if(typeof callback == "function"){
+                    callback();
+                }
+            }
+        });
+        console.log(self.globalData[key]);
+    },
+    login: function (callback) {
         //调用登录接口
         var self = this;
         wx.login({
@@ -43,14 +56,17 @@ App({
                          url: 'pages/regist/regist?isLogin='+'登陆'
                          });
                          console.log('suceess login');*/
+                        if(typeof callback == "function"){
+                            callback();
+                        }
                     }, function () {
                         wx.setStorage({
                             key: "3rd_session",
                             data: "imaging..."
                         });
-                        wx.navigateTo({
-                            url: '/pages/regist/regist?isLogin=' + '登陆'
-                        });
+                        /*wx.redirectTo({
+                            url: '/pages/login/login'
+                        });*/
                         console.log('suceess login complete');
                     });
 
@@ -60,7 +76,7 @@ App({
             }
         })
     },
-    regist: function () {
+    regist: function (callback) {
         //调用登录接口
         var self = this;
         wx.login({
@@ -75,15 +91,25 @@ App({
                          url: '/pages/regist/regist?isLogin='+'注册'
                          });
                          console.log('suceess regist');*/
+
                     }, function () {
                         wx.setStorage({
                             key: "3rd_session",
                             data: "imaging..."
                         });
-                        wx.navigateTo({
-                            url: '/pages/regist/regist?isLogin=' + '注册'
+                        wx.setStorage({
+                            key: "2rd_session",
+                            data: "imaging2..."
                         });
+                        self.globalData.user_name='321';
+                       /* wx.redirectTo({
+                            url: '/pages/regist/regist'
+                        });*/
+                       self.globalData.user_name='123';
                         console.log('suceess regist complete');
+                        if(typeof callback == "function"){
+                            callback();
+                        }
                     });
 
                 } else {
@@ -97,30 +123,33 @@ App({
         wx.checkSession({
             success: function () {
                 //session 未过期，并且在本生命周期一直有效 跳转首页
-                console.log("验证通过" + self.globalData.rd_session);
-                wx.switchTab({
-                  url: '/pages/doc/doc',
-                  success: function(res){
-                    // success
-                      console.log('success');
-                  },
-                  fail: function(res) {
-                    // fail
-                      console.log('fail'+res);
-                  },
-                  complete: function(res) {
-                    // complete
-                  }
-                })
+                wx.setStorage({
+                 key:"alreadyLogin",
+                 data:1,
+                 complete:function () {
+                     self.storageTolocal('alreadyLogin',function () {
+                         wx.switchTab({
+                             url: '/pages/my/my'
+                         })
+                     });
+                 }
+                 });
+                console.log('sucess');
             },
             fail: function () {
                 //登录态过期
-                login(); //重新登录
+                //self.login(); //重新登录
+                wx.navigateTo({
+                    url: '/pages/login/login'
+                });
+                console.log("fails");
             }
         })
     },
     globalData: {
-        userInfo: null,
-        rd_session: ''
+        user_name: null,
+        user_phone:null,
+        rd_session: '',
+        alreadyLogin:0 //1表示已经登录中，2表示登陆过但已经logout 0表示新用户
     }
 });
