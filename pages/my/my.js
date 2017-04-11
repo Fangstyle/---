@@ -2,7 +2,7 @@ var appInstance = getApp();
 Page({
     onLoad: function (options) {
         // 页面初始化 options为页面跳转所带来的参数
-        if (appInstance.globalData.user_name == 1) {
+        if (appInstance.globalData.alreadyLogin == 1) {
             this.setData({
                 isLogin: true,
             });
@@ -11,7 +11,7 @@ Page({
     },
     onReady: function () {
         // 页面渲染完成
-        if (appInstance.globalData.alreadyLogin) {
+        if (appInstance.globalData.alreadyLogin==1) {
             this.setData({
                 isLogin: true,
             });
@@ -20,7 +20,7 @@ Page({
     },
     onShow: function () {
         // 页面显示
-        if (appInstance.globalData.alreadyLogin) {
+        if (appInstance.globalData.alreadyLogin==1) {
             this.setData({
                 isLogin: true,
             });

@@ -6,7 +6,8 @@
     "pages/regist/regist",
     "pages/index/index",
     "pages/others/others",
-    "pages/scroll/scroll"
+    "pages/scroll/scroll",
+    "pages/switchCount/switchCount"
   ],
   "window":{
     "backgroundTextStyle":"light",

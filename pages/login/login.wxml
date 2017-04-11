@@ -4,7 +4,7 @@
         <image class="icon-login" src="../../images/head.png" ></image>
         <text class="text-login" >棕榈用户</text>
         <button class="login-exists" bindtap="login">直接登录</button>
-        <button class="login-input" bindtap="login">换号登陆</button>
+        <button class="login-input" bindtap="switchCount">换号登陆</button>
         <button class="switch-count" bindtap="regist">注册</button>
         <input type="password"   bindinput="bindPassword" placeholder="输入密码"   value="{{passwords}}"/>
         <input type="password"   bindinput="bindPasswordConfirm" placeholder="确认密码"   value="{{passwordConfirm}}"/>

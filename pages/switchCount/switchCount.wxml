@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="container">
+    <input  bindinput="bindPhoneNum" placeholder="输入手机号" value="{{phoneNum}}"/>
+    <input type="password" bindinput="bindPassword" placeholder="输入密码" value="{{passWord}}"/>
+    <button disabled="{{btnDisable}}" bindtap="changCount">登陆</button>
+</view>

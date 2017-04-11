@@ -22,6 +22,11 @@ Page({
     login:function () {
         appInstance.checkState();
     },
+    switchCount:function () {
+        wx.navigateTo({
+            url: '../switchCount/switchCount',
+        })
+    },
   regist:function(){
     wx.navigateTo({
       url: '../regist/regist',
