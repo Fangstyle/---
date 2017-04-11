@@ -2,6 +2,8 @@
 //获取应用实例
 //var utils = require('../../utils/util.js');
 var app = getApp();
+const storage = require('../../utils/storage');
+const auth = require('../../utils/auth');
 Page({
     onLoad: function (options) {
 
@@ -10,12 +12,21 @@ Page({
         countTime: "点击获取验证码",
         btnDisable: true,
         userInfo: {},
+        phoneNum:'',
+        pnoneCode:'',
+        passwords:'',
+        passwordConfirm:'',
         btnToPages:true
     },
     //事件处理函数
     confirms: function () {
-        //utils.httpPost(url,postparams,compelteSend);
-        this.compelteSend();
+        let self = this;
+        self.compelteSend();
+        console.log(self.data.phoneNum);
+        auth.sendPhoneCode(self.data.phoneNum,function (res) {
+            console.log('发送成功');
+        })
+
     },
     compelteSend: function () {
         var self = this;
@@ -42,6 +53,21 @@ Page({
         }, 1000)
 
     },
+    bindPassword:function (e) {
+        this.setData({
+            passwords: e.detail.value,
+        })
+    },
+    bindPasswordConfirm:function (e) {
+        if(this.data.passwords == e.detail.value){
+            this.setData({
+                btnToPages:false
+            })
+        }
+        this.setData({
+            passwordConfirm: e.detail.value,
+        })
+    },
     bindPhoneNum: function (e) {
         let temp = true;
         (/^1(3|4|5|7|8)\d{9}$/.test(e.detail.value)) ? temp = false : true;
@@ -50,23 +76,35 @@ Page({
             btnDisable: temp
         })
     },
-    bindConfirmNum: function (e) {
+    bindPhoneCodeNum: function (e) {
         let temp = true;
         if(e.detail.value){
             this.setData({
-                confirmNum: e.detail.value,
+                pnoneCode: e.detail.value,
                 btnToPages:false
             })
         }
 
     },
-
+    /*data格式{'mobile':1333333333,'code','4312','psd':123}*/
     regist: function () {
         var self = this;
+        let data = {
+            'mobile':self.data.phoneNum,
+            'code':self.data.pnoneCode,
+            'psd':self.data.passwordConfirm
+        }
+        auth.resgist(data,function (res) {
+            console.log(res);
+            self.toPages();
+        },function (err) {
+
+        });
         //utils.httpPost(url,{'confirmNum':e.detail.value,self.confirmNum},toPages);
-        app.regist(self.toPages);
+       // app.regist(self.toPages);
     },
     toPages: function () {
+        let self = this;
         wx.setStorage({
             key: "user_name",
             data: "resgist_user"
@@ -75,11 +113,9 @@ Page({
             key: "alreadyLogin",
             data:1
         });
-        app.storageTolocal('alreadyLogin',function () {
-            wx.switchTab({
-                url: '../doc/doc'
-            })
+        app.globalData.alreadyLogin=1;
+        wx.switchTab({
+            url: '../doc/doc'
         });
-
     }
 });

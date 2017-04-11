@@ -1,1 +1,36 @@
-{}
+
+{
+  "status": "SUCCESS",
+  "description": "登陆成功",
+  "token": "O+tXcWgK5JX4YmlunpeeeqJrY6gMbmJ6+9xmP2QLBz4ohz/+Ftn9wz5v6vSEx/qo",
+  "data": {
+    "id": "58eb38450cf2c62442e2b92d",
+    "auth": {
+      "name": "",
+      "mobile": "13761098892",
+      "email": ""
+    },
+    "base": {
+      "createTime": 1491810373454,
+      "updateTime": 1491810373454,
+      "status": ""
+    },
+    "source": "",
+    "personal": {
+      "gender": "",
+      "birthday": "",
+      "wechat": "",
+      "qq": "",
+      "timezone": ""
+    },
+    "academic": {
+      "gpa": "",
+      "english": ""
+    },
+    "group": {
+      "tutor": "",
+      "master": "",
+      "mentors": []
+    }
+  }
+}

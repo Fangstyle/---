@@ -1,45 +1,12 @@
 //app.js
-var util = require('utils/util.js');
+var dataUtil = require('./utils/dataUtil');
+var storage = require('./utils/storage');
 App({
     onLaunch: function () {
         let self = this;
         //调用API从本地缓存中获取数据
-        self.storageTolocal('alreadyLogin');
-/*        wx.getStorage({
-            key: '3rd_session',
-            success: function (res) {
-                self.globalData.rd_session = res.data;
-                console.log('++' + self.globalData.rd_session);
-            },
-            complete: function () {
-                if (self.globalData.rd_session) {
-                    self.checkState();
-                    console.log("测试");
-                    //下方写在checkState中，为了测试
-                } else {
-                    //第一次进行登录 打开注册页面
-                    console.log("注册页面");
-                    self.regist();
-                }
-            }
-        });
-        console.log('获取数据成功' + self.globalData.rd_session + "++");
-        console.log(this.globalData.rd_session);
-*/
-    },
-    storageTolocal:function (key,callback) {
-        var self = this;
-        wx.getStorage({
-            key: key,
-            success: function (res) {
-                self.globalData[key] = res.data;
-            },complete: function () {
-                if(typeof callback == "function"){
-                    callback();
-                }
-            }
-        });
-        console.log(self.globalData[key]);
+         //self.storageTolocal('alreadyLogin');
+        storage.storageTolocal(self,'alreadyLogin');
     },
     login: function (callback) {
         //调用登录接口
@@ -48,14 +15,6 @@ App({
             success: function (res) {
                 if (res.code) {
                     util.httpPost('https://test.com/onLogin', {code: res.code}, function (res) {
-                        /* wx.setStorage({
-                         key:"3rd_session",
-                         data:res.vaule
-                         });
-                         wx.navigateTo({
-                         url: 'pages/regist/regist?isLogin='+'登陆'
-                         });
-                         console.log('suceess login');*/
                         if(typeof callback == "function"){
                             callback();
                         }
@@ -127,7 +86,7 @@ App({
                  key:"alreadyLogin",
                  data:1,
                  complete:function () {
-                     self.storageTolocal('alreadyLogin',function () {
+                     storage.storageTolocal(self,'alreadyLogin',function () {
                          wx.switchTab({
                              url: '/pages/my/my'
                          })

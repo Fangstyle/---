@@ -2,8 +2,10 @@
 <view class="container">
     <view class="login">
         <input type="number"   bindinput="bindPhoneNum" placeholder="请输入您的手机号" auto-focus  value="{{phoneVaule}}"/>
+         <input type="password"   bindinput="bindPassword" placeholder="输入密码"   value="{{passwords}}"/>
+          <input type="password"   bindinput="bindPasswordConfirm" placeholder="确认密码"   value="{{passwordConfirm}}"/>
         <button bindtap="confirms" disabled="{{btnDisable}}">{{countTime}}</button>
-        <input type="number" bindinput="bindConfirmNum" placeholder="请输入验证码" />
+        <input type="number" bindinput="bindPhoneCodeNum" placeholder="请输入验证码" />
         <button bindtap="regist" disabled="{{btnToPages}}">注册</button>
     </view>
 </view>
