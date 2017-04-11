@@ -18,4 +18,19 @@ function storageTolocal(context,key,callback) {
     });
     console.log(self.globalData[key]);
 }
-module.exports = {storageTolocal}
+function storageArray(data) {
+    for(let i =0;i<data.length;i++){
+        wx.setStorage({
+            key:data[i].key,
+            data:data[i].data
+        });
+    }
+
+}
+function storageOne(key,value) {
+    wx.setStorage({
+        key:key,
+        data:value
+    });
+}
+module.exports = {storageTolocal,storageArray,storageOne}

@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 //var utils = require('../../utils/util.js');
-var app = getApp();
+const app = getApp();
 const storage = require('../../utils/storage');
 const auth = require('../../utils/auth');
 Page({
@@ -42,14 +42,6 @@ Page({
 
     toPages: function () {
         let self = this;
-        wx.setStorage({
-            key: "user_name",
-            data: "resgist_user"
-        });
-        wx.setStorage({
-            key: "alreadyLogin",
-            data: 1
-        });
         app.globalData.alreadyLogin = 1;
         wx.switchTab({
             url: '../doc/doc'

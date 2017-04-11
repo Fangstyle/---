@@ -1,6 +1,7 @@
 var dataUtil = require('dataUtil.js');
 var urlUtil = require('urlUtil.js');
 var url = require('../config');
+var storage = require('storage.js');
 
 function pageInit(orgId, params, site, that) {
   checkAndlogin(orgId, params, site, that)
@@ -99,6 +100,8 @@ function resgist(data,fun,err) {
         function (res) {
         if(res.status=='SUCCESS'){
             if(typeof fun == 'function'){
+                storage.storageOne('alreadyLogin',1);
+                storage.storageOne('token',res.token);
                 fun(res);
             }
         }else if(res.status=='FAIL'){
@@ -118,6 +121,15 @@ function login(data,fun,err) {
         function (res) {
             if(res.status=='SUCCESS'){
                 if(typeof fun == 'function'){
+/*                    let array = [{'key':'alreadyLogin','data':1},{'key':'token','data':res.token}]
+                    /!*wx.setStorage({
+                        key: "alreadyLogin",
+                        data:1
+                    });*!/
+                    storage.storageArray(array);*/
+                    storage.storageOne('alreadyLogin',1);
+                    storage.storageOne('token',res.token);
+
                     fun(res);
                 }
             }else if(res.status=='FAIL'){

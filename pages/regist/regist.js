@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 //var utils = require('../../utils/util.js');
-var app = getApp();
+const app = getApp();
 const storage = require('../../utils/storage');
 const auth = require('../../utils/auth');
 Page({
@@ -29,7 +29,7 @@ Page({
 
     },
     compelteSend: function () {
-        var self = this;
+        let self = this;
         this.setData({
             countTime: 5,
             btnDisable: true
@@ -88,7 +88,7 @@ Page({
     },
     /*data格式{'mobile':1333333333,'code','4312','psd':123}*/
     regist: function () {
-        var self = this;
+        let self = this;
         let data = {
             'mobile':self.data.phoneNum,
             'code':self.data.pnoneCode,
@@ -104,15 +104,6 @@ Page({
        // app.regist(self.toPages);
     },
     toPages: function () {
-        let self = this;
-        wx.setStorage({
-            key: "user_name",
-            data: "resgist_user"
-        });
-        wx.setStorage({
-            key: "alreadyLogin",
-            data:1
-        });
         app.globalData.alreadyLogin=1;
         wx.switchTab({
             url: '../doc/doc'

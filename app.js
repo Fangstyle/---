@@ -1,6 +1,6 @@
 //app.js
-var dataUtil = require('./utils/dataUtil');
-var storage = require('./utils/storage');
+const dataUtil = require('./utils/dataUtil');
+const storage = require('./utils/storage');
 App({
     onLaunch: function () {
         let self = this;
@@ -10,7 +10,7 @@ App({
     },
     login: function (callback) {
         //调用登录接口
-        var self = this;
+        let self = this;
         wx.login({
             success: function (res) {
                 if (res.code) {
@@ -37,7 +37,7 @@ App({
     },
     regist: function (callback) {
         //调用登录接口
-        var self = this;
+        let self = this;
         wx.login({
             success: function (res) {
                 if (res.code) {
@@ -109,6 +109,6 @@ App({
         user_name: null,
         user_phone:null,
         rd_session: '',
-        alreadyLogin:0 //1表示已经登录中，2表示登陆过但已经logout 0表示新用户
+        alreadyLogin:2 //1表示已经登录中，2表示登陆过但已经logout 0表示新用户
     }
 });
